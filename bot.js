@@ -3,7 +3,7 @@ const client = new Discord.Client();
  
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setActivity("اكتب اي شي",{type: 'WATCHING'})
+   client.user.setActivity("4Play",{type: 'WATCHING'})
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -37,7 +37,7 @@ const queue = new Map();
  
  
  
-var prefix = "!" 
+var prefix = "4" 
 client.on('message', async msg => {
     if (msg.author.bot) return undefined;
    
@@ -88,9 +88,7 @@ client.on('message', async msg => {
                     .setDescription(`**الرجآء من حضرتك إختيآر رقم المقطع** :
 ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
  
-                    .setFooter("By JS Mehdi_..!#5041
-EMAIL
-")
+                    .setFooter("By JS Mehdi_..!#5041")
                     msg.channel.sendEmbed(embed1).then(message =>{message.delete(20000)})
                    
                     // eslint-disable-next-line max-depth
@@ -275,7 +273,9 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
    }
    });
  
- 
+ client.on('ready',async () => {
+  client.channels.find(ch => ch.id === "556784607039717389" && ch.type === 'voice').join();
+});
  
  
 client.login(process.env.BOT_TOKEN);
